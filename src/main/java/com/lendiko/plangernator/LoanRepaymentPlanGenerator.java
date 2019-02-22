@@ -41,7 +41,7 @@ public class LoanRepaymentPlanGenerator {
         cal.setTime(sdf.parse(date));
 
         interestRate = interestRate / 100; //Converting % into actual decimal value
-        double monthlyRate = interestRate / 12.0;
+        double monthlyRate = interestRate / 12;
         double initialOutstandingPrincipal = loanAmount;
         double borrowerPaymentAmount = (loanAmount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -durationInMonths));
 
@@ -58,7 +58,7 @@ public class LoanRepaymentPlanGenerator {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Map payloadMap = new HashMap<>();
+        Map payloadMap = new HashMap<String,Object>();
 
         System.out.print("Please enter below details for loan repayment plan calculation\n");
         System.out.print("Total loan principal amount : ");
@@ -66,7 +66,7 @@ public class LoanRepaymentPlanGenerator {
         payloadMap.put("loanAmount", String.valueOf(loanAmount));
 
         System.out.print("Nominal interest rate : ");
-        double interestRate = scanner.nextInt();
+        double interestRate = scanner.nextDouble();
         payloadMap.put("nominalRate", getDoubleWithTwoPrecisionSet(interestRate));
 
         System.out.print("Duration(Number of instalments in months) : ");

@@ -41,9 +41,9 @@ public class LoanRepaymentPlanGeneratorUtilsTest {
         payloadMap.put("duration", 24);
         payloadMap.put("startDate", "2018-01-01T00:00:01Z");
 
-        String actuaRepaymentAmountItemsJSON = LoanRepaymentPlanGeneratorUtils.getLoanItemsAsJson(payloadMap);
+        String actualRepaymentAmountItemsJSON = LoanRepaymentPlanGeneratorUtils.getLoanItemsAsJson(payloadMap);
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> actualPayloadMap = mapper.readValue(actuaRepaymentAmountItemsJSON, new TypeReference<Map<String, Object>>() {
+        Map<String, Object> actualPayloadMap = mapper.readValue(actualRepaymentAmountItemsJSON, new TypeReference<Map<String, Object>>() {
         });
         String expectedLoanAmount = "5000";
 
